@@ -1,0 +1,9 @@
+footer{
+    position: fixed;
+    bottom: 0px;
+}
+footer span{
+    
+    margin: auto;
+    font-size: 0.8em;
+}
