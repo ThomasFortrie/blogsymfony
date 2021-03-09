@@ -1,6 +1,7 @@
 footer{
     position: fixed;
     bottom: 0px;
+    background-color: rgb(167, 66, 66);
 }
 footer span{
     
