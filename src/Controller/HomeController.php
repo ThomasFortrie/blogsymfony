@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Entity\Articles;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -18,6 +19,12 @@ class HomeController extends AbstractController
  */
     public function home(): Response
     {
-        return $this->render('home.html.twig');
+        $repo = $this->getDoctrine()->getRepository(Articles::class);
+        $articles = $repo->findAll();
+
+
+        return $this->render('home.html.twig',[
+            'articles' => $articles
+        ]);
     }
 }

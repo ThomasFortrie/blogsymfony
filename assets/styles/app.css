@@ -1,3 +1,19 @@
 body {
     background-color: rgb(182, 182, 182);
 }
+
+
+/**
+Card des Articles
+**/
+.cardArticle{
+    padding :2px;
+    width: 350px;
+}
+.flexContainer{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    flex-shrink: inherit;
+    align-content: space-between;
+}
