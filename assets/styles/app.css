@@ -9,6 +9,12 @@ Card des Articles
 .cardArticle{
     padding :2px;
     width: 350px;
+    border: 1px solid rgb(0, 0, 0);
+    border-radius: 5px;
+    background-color: rgb(255, 235, 218);
+}
+.cardArticle:nth-child(2n){
+    background-color: rgb(202, 202, 202);
 }
 .flexContainer{
     display: flex;

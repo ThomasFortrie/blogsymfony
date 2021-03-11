@@ -72,4 +72,15 @@ class Articles
 
         return $this;
     }
+
+    public function findForHome(){
+
+        $repo = new Articles();
+
+        return $repo->findForHome();
+
+    }
+
+
+
 }
