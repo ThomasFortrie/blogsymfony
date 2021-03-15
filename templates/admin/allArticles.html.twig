@@ -1,0 +1,29 @@
+{% extends "base.html.twig" %}
+
+
+{% block body %}
+	<div class="row m-4">
+		<h1>Gestion des articles</h1>
+	</div>
+	<div class="justify-content-md-center">
+		<div class="table table-striped">
+			<thead>
+				<tr>
+					<th>Titre</th>
+					<th>Action</th>
+				</tr>
+			</thead>
+			<tbody>
+				{% for article in articles %}
+					<tr>
+						<td>{{ article.name }}</td>
+						<td>{{ article.name }}</td>
+						<td><a href="{{ path('admin.article.edit', {id: article.id}) }}" class="btn btn-secondary">Gérer l'article</a></td>
+					</tr>
+				{% endfor %}
+
+			</tbody>
+		</div>
+	</div>
+
+{% endblock %}
