@@ -2,15 +2,30 @@
 
 {% block title %}
 	Edition de l'article
+
 {% endblock %}
 
 {% block body %}
 
+	<div class="row m-4">
+		<h1>Édition de l'article</h1>
+		<div class="col-md-4">
+			<a href="{{ path('admin.articles') }}" class="btn btn-primary">Retour Liste</a>
+		</div>
+	</div>
 
+	<div class="container mt-4 ">
+		{{ form_start(form) }}
+		<div class="row">{{ form_errors(form) }}</div>
 
-
-
-
+		<div class="row">
+			{{ form_row(form.name)}}
+		</div>
+		<div class="row">
+			{{ form_row(form.contenu)}}
+		</div>
+		{{ form_end(form) }}
+	</div>
 
 
 {% endblock %}

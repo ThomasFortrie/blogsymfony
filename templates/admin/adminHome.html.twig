@@ -3,12 +3,12 @@
 
 {% block body %}
 
-	<div class="justify-content-md-center">
+	<div class="justify-content-md-center row">
 		<h1>Administration</h1>
 
-		<ul>
-			<li><a href="{{ '/admin/articles' }}">Gérer tout les articles...</a></li>
-		</ul>
+		<a href="{{ '/admin/articles' }}" class="btn btn-primary col-md-3 m-1">Liste des articles</a>
+		<a href="{{ '/admin/articles' }}" class="btn btn-primary col-md-3 m-1">...</a>
+		<a href="{{ '/admin/articles' }}" class="btn btn-success col-md-3 m-1"> + Nouvel Article</a>
 	</div>
 
 {% endblock %}

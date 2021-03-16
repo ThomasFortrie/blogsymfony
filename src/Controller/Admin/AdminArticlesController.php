@@ -3,6 +3,7 @@
 namespace App\Controller\Admin;
 
 use App\Entity\Articles;
+use App\Form\ArticleType;
 use App\Repository\ArticlesRepository;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -36,12 +37,17 @@ class AdminArticlesController extends AbstractController
     }
 
     /**
-     * @Route("/admin/{id}", name="admin.article.edit")
+     * @Route("/admin/edit/{id}", name="admin.edit")
      */
     public function edit(Articles $article)
     {
+
+        $form = $this->createForm(ArticleType::class, $article);
+
+
         return $this->render('admin/edit.html.twig', [
-            'article' => $article
+            'article' => $article,
+            'form' => $form->createView()
         ]);
     }
 
@@ -53,32 +59,17 @@ class AdminArticlesController extends AbstractController
         $entityManager = $this->getDoctrine()->getManager();
         $article = $entityManager->getRepository(Articles::class)->find($id);
 
-        if(!$article){
-            throw $this->createNotFoundException('Pas d\'article trouvé pour l\'id '.$id);
+        if (!$article) {
+            throw $this->createNotFoundException('Pas d\'article trouvé pour l\'id ' . $id);
 
             return $this->redirectToRoute('admin.articles');
-        }else{
+        } else {
             $entityManager->remove($article);
             $entityManager->flush();
 
             return $this->redirectToRoute('admin.articles');
         }
-
-
-
-    //     if (!$this->articleRepository->findOneBy($id)) {
-    //         return $this->redirectToRoute('/admin/articles');
-    //     } else {
-    //         $this->articleRepository->deleteById($id);
-
-    //         $articles = $this->articleRepository->findAll();
-    //         return $this->render(
-    //             'admin/allArticles.html.twig',
-    //             [
-    //                 'articles' => $articles
-
-    //             ]
-    //         );
-    //     }
     }
+
+
 }

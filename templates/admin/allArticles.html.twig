@@ -18,7 +18,7 @@
 				{% for article in articles %}
 					<tr scope="row">
 						<td>{{ article.name }}</td>
-						<td><a href="{{ path('admin.article.edit', {id: article.id}) }}" class="btn btn-secondary">Gérer l'article</a></td>
+						<td><a href="{{ path('admin.edit', {id: article.id}) }}" class="btn btn-secondary">Gérer l'article</a></td>
 						<td><a href="{{ path('admin.article.sup', {id: article.id}) }}" class="btn btn-danger">Supprimer l'article</a></td>
 					</tr>
 				{% endfor %}
