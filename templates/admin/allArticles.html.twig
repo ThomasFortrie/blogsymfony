@@ -10,7 +10,8 @@
 			<thead>
 				<tr>
 					<th>Titre</th>
-					<th>Action</th>
+					<th>Éditer</th>
+					<th>Supprimer</th>
 				</tr>
 			</thead>
 			<tbody>
@@ -18,6 +19,7 @@
 					<tr scope="row">
 						<td>{{ article.name }}</td>
 						<td><a href="{{ path('admin.article.edit', {id: article.id}) }}" class="btn btn-secondary">Gérer l'article</a></td>
+						<td><a href="{{ path('admin.article.sup', {id: article.id}) }}" class="btn btn-danger">Supprimer l'article</a></td>
 					</tr>
 				{% endfor %}
 

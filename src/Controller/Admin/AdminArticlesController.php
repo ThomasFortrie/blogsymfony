@@ -27,10 +27,12 @@ class AdminArticlesController extends AbstractController
     {
         $articles = $this->articleRepository->findAll();
 
-        return $this->render('admin/allArticles.html.twig',
-        [
-            'articles' => $articles
-        ]);
+        return $this->render(
+            'admin/allArticles.html.twig',
+            [
+                'articles' => $articles
+            ]
+        );
     }
 
     /**
@@ -43,7 +45,40 @@ class AdminArticlesController extends AbstractController
         ]);
     }
 
+    /**
+     * @Route("/admin/sup/{id}", name="admin.article.sup")
+     */
+    public function sup($id)
+    {
+        $entityManager = $this->getDoctrine()->getManager();
+        $article = $entityManager->getRepository(Articles::class)->find($id);
+
+        if(!$article){
+            throw $this->createNotFoundException('Pas d\'article trouvé pour l\'id '.$id);
+
+            return $this->redirectToRoute('admin.articles');
+        }else{
+            $entityManager->remove($article);
+            $entityManager->flush();
+
+            return $this->redirectToRoute('admin.articles');
+        }
 
 
 
+    //     if (!$this->articleRepository->findOneBy($id)) {
+    //         return $this->redirectToRoute('/admin/articles');
+    //     } else {
+    //         $this->articleRepository->deleteById($id);
+
+    //         $articles = $this->articleRepository->findAll();
+    //         return $this->render(
+    //             'admin/allArticles.html.twig',
+    //             [
+    //                 'articles' => $articles
+
+    //             ]
+    //         );
+    //     }
+    }
 }

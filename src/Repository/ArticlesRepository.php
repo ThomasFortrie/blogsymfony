@@ -20,6 +20,12 @@ class ArticlesRepository extends ServiceEntityRepository
     }
 
 
+    // public function deleteById($id)
+    // {
+    //     $entityManager = $this->getDoctrine()->getManager();
+
+
+    // }
     
 
 
