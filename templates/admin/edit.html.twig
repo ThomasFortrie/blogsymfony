@@ -14,16 +14,21 @@
 		</div>
 	</div>
 
-	<div class="container mt-4 ">
+	<div class="container mt-4 justify-content-md-center">
 		{{ form_start(form) }}
-		<div class="row">{{ form_errors(form) }}</div>
 
-		<div class="row">
-			{{ form_row(form.name)}}
-		</div>
-		<div class="row">
-			{{ form_row(form.contenu)}}
-		</div>
+			<div class="row">
+				<div class="col-md-6">{{ form_row(form.name) }}</div>
+				<div class="col-md-6">{{ form_row(form.image) }}</div>
+			</div>
+			<div class="row">
+				{{ form_row(form.contenu, {'attr': {'class': 'form-control-lg form-control formContenu'}}) }}
+			</div>
+
+		{{ form_widget(form) }}
+
+	<button class="btn btn-primary m-4">Éditer</button>
+
 		{{ form_end(form) }}
 	</div>
 

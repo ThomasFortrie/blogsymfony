@@ -23,3 +23,7 @@ Card des Articles
     flex-shrink: inherit;
     align-content: space-between;
 }
+
+.formContenu{
+    height: 500px;
+}
