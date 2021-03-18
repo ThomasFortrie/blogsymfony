@@ -3,6 +3,10 @@
 
 {% block body %}
 	<div class="row m-4">
+		<a class="col-md-8 m-1  btn btn-primary" href="{{ path('admin.index') }}">Retour Admin Index</a>
+		<a href="{{ path('admin.article.new') }}" class="btn btn-success col-md-3 m-1 "> + Nouvel Article</a>
+	</div>
+	<div class="row m-4">
 		<h1>Gestion des articles</h1>
 	</div>
 	<div class="justify-content-md-center">
@@ -18,14 +22,16 @@
 				{% for article in articles %}
 					<tr scope="row">
 						<td>{{ article.name }}</td>
-						<td><a href="{{ path('admin.edit', {id: article.id}) }}" class="btn btn-secondary">Gérer l'article</a></td>
-						<td><a href="{{ path('admin.article.sup', {id: article.id}) }}" class="btn btn-danger">Supprimer l'article</a></td>
+						<td>
+							<a href="{{ path('admin.edit', {id: article.id}) }}" class="btn btn-secondary">Gérer l'article</a>
+						</td>
+						<td>
+							<a href="{{ path('admin.article.sup', {id: article.id}) }}" class="btn btn-danger">Supprimer l'article</a>
+						</td>
 					</tr>
 				{% endfor %}
 
 			</tbody>
-			</table>
-		</div>
+		</table>
 	</div>
-
-{% endblock %}
+</div>{% endblock %}

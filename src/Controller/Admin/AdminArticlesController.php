@@ -37,6 +37,36 @@ class AdminArticlesController extends AbstractController
         );
     }
 
+
+    /**
+     * @Route("/admin/article/new", name="admin.article.new")
+     */
+    public function new(Request $request)
+    {
+        $article = new Articles();
+
+        $form = $this->createForm(ArticleType::class, $article);
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+
+            $task = $form->getData();
+
+            $em = $this->getDoctrine()->getManager();
+            $em->persist($task);
+            $em->flush();
+
+            return $this->redirectToRoute('admin.articles');
+        }
+
+        return $this->render('admin/new.html.twig', [
+            'article' => $article,
+            'form' => $form->createView()
+        ]);
+    }
+
+
+
     /**
      * @Route("/admin/edit/{id}", name="admin.edit")
      */
@@ -45,9 +75,9 @@ class AdminArticlesController extends AbstractController
 
         $form = $this->createForm(ArticleType::class, $article);
         $form->handleRequest($request);
-        
 
-        if($form->isSubmitted() && $form->isValid()){
+
+        if ($form->isSubmitted() && $form->isValid()) {
 
             $task = $form->getData();
 
@@ -84,6 +114,4 @@ class AdminArticlesController extends AbstractController
             return $this->redirectToRoute('admin.articles');
         }
     }
-
-
 }

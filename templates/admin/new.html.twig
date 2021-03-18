@@ -1,0 +1,36 @@
+{% extends "base.html.twig" %}
+
+{% block title %}
+	Création d'un Article 
+
+{% endblock %}
+
+{% block body %}
+
+	<div class="row m-4">
+		<h1>Création de l'article</h1>
+		<div class="col-md-4">
+			<a href="{{ path('admin.articles') }}" class="btn btn-primary">Retour Liste</a>
+		</div>
+	</div>
+
+	<div class="container mt-4 justify-content-md-center">
+		{{ form_start(form) }}
+
+			<div class="row">
+				<div class="col-md-6">{{ form_row(form.name) }}</div>
+				<div class="col-md-6">{{ form_row(form.image) }}</div>
+			</div>
+			<div class="row">
+				{{ form_row(form.contenu, {'attr': {'class': 'form-control-lg form-control formContenu'}}) }}
+			</div>
+
+		{{ form_widget(form) }}
+
+	<button class="btn btn-primary m-4">Créer</button>
+
+		{{ form_end(form) }}
+	</div>
+
+
+{% endblock %}
