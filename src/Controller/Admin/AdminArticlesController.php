@@ -5,15 +5,16 @@ namespace App\Controller\Admin;
 use App\Entity\Articles;
 use App\Form\ArticleType;
 use App\Repository\ArticlesRepository;
+use Doctrine\Persistence\ObjectManager;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
-
-
 
 class AdminArticlesController extends AbstractController
 {
 
     private $articleRepository;
+
 
     public function __construct(ArticlesRepository $articleRepository)
     {
@@ -39,10 +40,23 @@ class AdminArticlesController extends AbstractController
     /**
      * @Route("/admin/edit/{id}", name="admin.edit")
      */
-    public function edit(Articles $article)
+    public function edit(Articles $article, Request $request)
     {
 
         $form = $this->createForm(ArticleType::class, $article);
+        $form->handleRequest($request);
+        
+
+        if($form->isSubmitted() && $form->isValid()){
+
+            $task = $form->getData();
+
+            $em = $this->getDoctrine()->getManager();
+            $em->persist($task);
+            $em->flush();
+
+            return $this->redirectToRoute('admin.articles');
+        }
 
 
         return $this->render('admin/edit.html.twig', [
